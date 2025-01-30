@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raindrop Rentals | Premium Umbrella Booking</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #ddd;
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: var(--dark);
+        }
+
+        .navbar {
+    background: linear-gradient(to right, #ff7e5f, #feb47b); /* Gradient from left to right */
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+        .nav-links {
+            display: flex;
+            justify-content: flex-end;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            /*background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/1200/800');*/
+            background-image: url('https://cdn.pixabay.com/photo/2017/06/19/07/41/umbrella-2418413_1280.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .hero-content {
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            background: var(--secondary);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background: #2980b9;
+        }
+
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-image {
+            height: 200px;
+            background: #ddd;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-price {
+            color: var(--accent);
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .booking-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+        }
+
+        .bookings-list {
+            margin-top: 2rem;
+        }
+
+        .booking-card {
+            background: var(--light);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .about-us {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .social-icons i {
+            font-size: 1.5rem;
+            color: var(--light);
+            transition: color 0.3s ease;
+        }
+
+        .social-icons i:hover {
+            color: var(--secondary);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        .success-message {
+            background: #2ecc71;
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            display: none;
+            margin-top: 1rem;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#bookings">Bookings</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Raindrop Umbrellas</h1>
+            <p>Premium Umbrellas for Every Weather</p>
+            <button class="btn" onclick="scrollToProducts()">View Collection</button>
+        </div>
+    </section>
+
+    <section id="products">
+        <h2 class="section-title">Our Products</h2>
+        <div class="products">
+            <!-- Products will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <section id="bookings">
+        <h2 class="section-title">Your Bookings</h2>
+        <div class="booking-section">
+            <div id="bookingsList" class="bookings-list">
+                <!-- Bookings will be displayed here -->
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-us">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1541697183324-e15d407c91cf?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8dW1icmVsbGF8ZW58MHx8MHx8fDA%3D" alt="About Us" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="about-content">
+                <h3>Our Story</h3>
+                <p>Founded in 2020, Raindrop Rentals has been providing premium umbrella rental services to customers who value both style and functionality. Our mission is to ensure that no one ever has to compromise on staying dry and looking great.</p>
+                <p>We pride ourselves on our carefully curated selection of high-quality umbrellas and our commitment to exceptional customer service.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Rain Street, Weather City, WC 12345</p>
+                <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                <p><i class="fas fa-envelope"></i> info@raindroprentals.com</p>
+                <div class="social-icons">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+                <div id="successMessage" class="success-message">
+                    Message sent successfully!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Raindrop Rentals. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Sample product data
+        const products = [
+            {
+                id: 1,
+                name: "Classic Black Umbrella",
+                price: 29.99,
+                image: "https://img.freepik.com/free-photo/asian-woman-holing-umbrella-white-background_53876-14328.jpg?t=st=1738212568~exp=1738216168~hmac=f2175c574657f5490075797b5121b9f067faf6ac7b17fb0fef2ec96dcae71294&w=1060",
+                description: "Elegant and timeless design"
+            },
+            {
+                id: 2,
+                name: "Automatic Rainbow Umbrella",
+                price: 39.99,
+                image: "https://img.freepik.com/free-photo/beautiful-young-woman-holding-rainbow-umbrella_23-2148647640.jpg?ga=GA1.1.1575791826.1723096412&semt=ais_hybrid",
+                description: "Colorful and convenient"
+            },
+            {
+                id: 3,
+                name: "Premium Golf Umbrella",
+                price: 49.99,
+                image: "https://img.freepik.com/free-photo/funny-scene-about-golf_52683-122078.jpg?ga=GA1.1.1575791826.1723096412&semt=ais_hybrid",
+                description: "Extra large coverage"
+            }
+        ];
+
+        // Initialize bookings array
+        let bookings = [];
+
+        // Load products
+        function loadProducts() {
+            const productsContainer = document.querySelector('.products');
+            productsContainer.innerHTML = products.map(product => `
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                        <p class="product-price">$${product.price}</p>
+                        <button class="btn" onclick="bookProduct(${product.id})">Book Now</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Book product
+        function bookProduct(productId) {
+            const product = products.find(p => p.id === productId);
+            const booking = {
+                id: Date.now(),
+                productId,
+                productName: product.name,
+                price: product.price,
+                date: new Date().toLocaleDateString()
+            };
+            bookings.push(booking);
+            updateBookingsList();
+            alert('Booking successful!');
+        }
+
+        // Update bookings list
+        function updateBookingsList() {
+            const bookingsList = document.getElementById('bookingsList');
+            if (bookings.length === 0) {
+                bookingsList.innerHTML = '<p>No bookings yet.</p>';
+                return;
+            }
+            bookingsList.innerHTML = bookings.map(booking => `
+                <div class="booking-card">
+                    <h3>${booking.productName}</h3>
+                    <p>Booking Date: ${booking.date}</p>
+                    <p>Price: $${booking.price}</p>
+                    <button class="btn" onclick="cancelBooking(${booking.id})">Cancel Booking</button>
+                </div>
+            `).join('');
+        }
+
+        // Cancel booking
+        function cancelBooking(bookingId) {
+            bookings = bookings.filter(booking => booking.id !== bookingId);
+            updateBookingsList();
+            alert('Booking cancelled successfully!');
+        }
+
+        // Handle contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            this.reset();
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+        });
+
+        // Smooth scroll to products
+        function scrollToProducts() {
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProducts();
+            updateBookingsList();
+        });
+    </script>
+</body>
+</html>
